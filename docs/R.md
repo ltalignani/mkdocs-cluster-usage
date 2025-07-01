@@ -49,9 +49,6 @@ cd /path/to/my_project/
 ```bash
 vim code/setup_env.R
 ```
-
-At this step, you should already have made a list of the packages needed for the analyses. If you need to add packages during the analysis, simply edit this file and run it again in RStudio.
-
 ```R
 # setup_env.R
 
@@ -94,11 +91,11 @@ renv::snapshot()
 cat("Setup completed. Session info:\n")
 sessionInfo()
 ```
-
 Save the file and quit vim by **pressing escape** and entering the following command :
 ```bash
 :wq
 ```
+At this step, you should already have made a list of the packages needed for the analyses. If you need to add packages during the analysis, simply edit this file and run it again.
 
 3. Use interactive mode to setup the environment
 
@@ -107,17 +104,22 @@ srun -p fast -c 2 --pty bash -i
 module load R/4.3.3
 Rscript code/setup_env.R
 ```
-
-4. the next move: analyzing data
+4. The next move: analyzing data
+   
 When you create or open a R script in the project, either via a terminal or in RStudio ONDemand(if available), simply start it with your isolated environment:
-
-`renv::activate()`
-
+```R
+renv::activate()
+```
 The previously versions of installed packages will then be available.
 Don't forget to add to the end of your script: 
-
-`renv::deactivate()`
-
+```R
+renv::deactivate()
+```
+In a bash script, you can also use
+```R
+renv::restore()
+```
+if you already have created the `renv`. This function just recall the R environment present in the project directory.
 
 ## Use --vanilla to launch R scripts: avoid side-effects
 
@@ -191,13 +193,13 @@ find /tmp -name "Rtmp*" -user $USER -exec -rm -rf {} +
 
 Save the file and quit the editor (esc + :wq). 
 
-To run the script, in the shell, just enter:
+To run the script, just type the following command:
 
 ```bash
 sbatch --vanilla my_script.R
 ```
 
-if `--vanilla` is already in the bash script (ie: Rscript --vanilla my_script.R), just enter:
+if `--vanilla` is already in the bash script (ie: Rscript --vanilla my_script.R), just type:
 
 ```bash
 sbatch my_script.R

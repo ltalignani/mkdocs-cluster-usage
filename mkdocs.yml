@@ -27,6 +27,7 @@ theme:
     - navigation.indexes
     - navigation.sections
     - navigation.tracking
+    - content.code.copy
   palette:
     # Dark Mode
     - scheme: slate
