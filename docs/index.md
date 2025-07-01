@@ -1,6 +1,10 @@
-# Welcome to MkDocs
+# Welcome to Cluster Usage Guide
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This guide introduces:  
+•	Connecting to a cluster via SSH  
+•	Submitting jobs with sbatch and srun  
+•	Writing a basic SLURM job script  
+•	Running clean & reproducible jobs
 
 ## Commands
 
@@ -9,11 +13,6 @@ For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 * `mkdocs build` - Build the documentation site.
 * `mkdocs -h` - Print help message and exit.
 
-## Project layout
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
 
-I like to drink :beers: after I played :football:
+

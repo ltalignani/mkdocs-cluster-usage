@@ -1,0 +1,6 @@
+.md-typeset p code {
+    color: #d14;
+    background-color: transparent;
+    font-weight: 600;
+    padding: 0 4px;
+    border-radius: 3px; }
