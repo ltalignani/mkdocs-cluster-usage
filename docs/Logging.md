@@ -32,7 +32,7 @@ Replace username with your cluster *login name* and *cluster.address.edu* with t
     If you need to connect to the cluster frequently, it may be useful to save the address in an alias, stored in the *.bashrc* file. All you have to do is enter the alias followed by the enter key to access the cluster directly:
 
 ```bash
-echo "alias ifb='ssh ltalignani@core.cluster.france-bioinformatique.fr'" >> ~/.bashrc
+echo "alias ifb='ssh student1@core.cluster.france-bioinformatique.fr'" >> ~/.bashrc
 source ~/.bashrc
 ```
 </br>

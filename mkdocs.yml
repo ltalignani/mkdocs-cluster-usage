@@ -1,5 +1,7 @@
 site_name: Cluster Usage
 site_url: https://ltalignani.github.io/mkdocs-cluster-usage/
+repo_url: https://github.com/ltalignani/mkdocs-cluster-usage
+repo_name: ltalignani/mkdocs-cluster-usage
 nav:
   - Home: index.md
   - Logging: Logging.md
@@ -63,12 +65,16 @@ markdown_extensions:
           class: "mermaid"
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.snippets
+  - pymdownx.blocks.caption
   - pymdownx.tabbed:
       alternate_style: true
   - admonition
   - pymdownx.details
+  - md_in_html
+  - def_list
+  
 
 extra_css:
   - css/overrides.css
-  - 
+
 copyright: Copyright &copy; 2025 Loïc Talignani

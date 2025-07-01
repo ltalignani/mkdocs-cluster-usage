@@ -31,10 +31,11 @@ my_project/
 ## Use renv::init() to create clean environment and install necessary packages
 
 `renv::init()` does several important things:   
+
 1.	Creates the renv/ infrastructure in your project:  
-    * Folder renv/ with configuration files  
-    * Rprofile file that activates renv at start-up  
-    * renv.lock file (empty at start)  
+      1. Folder renv/ with configuration files  
+      2. Rprofile file that activates renv at start-up  
+      3. renv.lock file (empty at start)  
 2.	Isolates the environment: creates a private package library for this project only.  
 3.	Scans the existing code to automatically detect the packages used (via library(), require() ...)  
 4.	Installs the detected packages in the project's private library (NOT all, unfortunatelly...)  
@@ -95,7 +96,7 @@ Save the file and quit vim by **pressing escape** and entering the following com
 ```bash
 :wq
 ```
-At this step, you should already have made a list of the packages needed for the analyses. If you need to add packages during the analysis, simply edit this file and run it again.
+At this step, you should already have made a list of the packages needed for the analyses. If you need to add packages during the analysis, simply edit this file and run it again.  
 
 3. Use interactive mode to setup the environment
 
