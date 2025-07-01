@@ -30,6 +30,7 @@ theme:
     - navigation.sections
     - navigation.tracking
     - content.code.copy
+    - toc.integrate
   palette:
     # Dark Mode
     - scheme: slate
@@ -73,7 +74,12 @@ markdown_extensions:
   - md_in_html
   - def_list
   
-
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ltalignani/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/loic-talignani-83a7581a2/
 extra_css:
   - css/overrides.css
 

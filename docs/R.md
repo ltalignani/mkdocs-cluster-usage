@@ -1,41 +1,68 @@
 # Running R scripts on a Cluster (clean & reproducible)
 
-When launching R scripts on a computing cluster, it is highly recommended to run them in a clean environment to ensure reproducibility and avoid unexpected side effects caused by user-specific configurations. You have to:
+When launching R scripts on a computing cluster, it is highly recommended to run them in a clean environment to ensure reproducibility and avoid unexpected side effects caused by user-specific configurations. By creating a R projects, you will isolate your work from other projects. Not only can you have project specific files and libraries, but also project specific settings. To do so, you just have to:
 
-1. Create `renv` environment 
-2. Use --vanilla option 
+1. Create `renv` environment, 
+2. Use `--vanilla` option when running a script,
 
 ## Organize your code:
+Up next: organize your code.  
+Choose a structure that works well for you and stick to it as much as possible. Below is a suggested way of organising the code, with some files and directories created automatically:
 
 ```
 my_project/
-├── code/          		# R script directory
+├── code/          		        # R script directory
 │   └── myscript.R
-│   └── setup_env.R
-├── data/          		# Raw data directory
+│   └── setup_env.R             # First script to run
+├── data/          		        # Raw data directory
 │   └── data.csv
-├── results/     			# Analysis results directory
-├── renv/          		# renv directory
+├── results/     		        # Analysis results directory
+├── renv/          		        # renv directory
 │   └── activate.R
 │   └── library
 │   └── local
-├── renv.lock      		# Frozen dependencies
-├── R/
-│   └── dataExtraction.R
-├── .Renviron     		# Local environment variables
-├── .Rprofile        		# Starting session instructions
+├── renv.lock      		        # Frozen dependencies
+├── tests/          		    # R script directory
+│   └── my_temporary_script.R
+├── .Renviron     		        # Local environment variables
+├── .Rprofile                   # Starting session instructions
 ├── .gitignore 
 └── README.md
 ```
+
+**Mandatory**:  
+- `README.md` file. This file is arguably **the most important** file you’ll create in your project. It should provide a clear overview of the code’s purpose, including:
+    - The goal of the project
+    - Set-up and execution instructions
+    - If no separate documents exist (e.g., architecture diagram or system maintenance guide), a high-level explanation of how the code is structured and works
+
+!!! warning "The `README.md` is not the place to describe individual functions in detail"  
+     Keep it high-level and accessible.  
+     The `README.md` is a living document. As your code evolves, make sure to keep the documentation up to date.  
+     Don’t postpone writing it until the end of the project — by then, you’ll likely be racing against deadlines and already thinking about your next project.  
+     Start documenting early. It will save you time and effort later. 
+
+**File / directories to be created:**  
+- `code/` directory. It contains scripts, in the form of `.R` files.  
+- `data/` directory. It contains data to be analyzed (.csv, .vcf...).  
+- `results/` directory. It contains outputs. It is recommended to add subdirectories in this directory.  
+- `tests/` folder. Code tests should go in here.  
+- `.gitignore`. In this file, you add everything you do not want ending up in your remote repository. As a minimum, add `.RProj` file in there.  
+
+
+**Automatically created if you followed step 1:**  
+- `renv.lock` file, `renv/` folder and `.Rprofile` file. This is the virtual environment set up. They will be automatically created by renv when you activate it.  
+- `.Rproj` file. This is an RStudio file containing the project specific settings. Created automatically when you create an R project with RStudio ON Demand (see further).  
+
 
 ## Use renv::init() to create clean environment and install necessary packages
 
 `renv::init()` does several important things:   
 
 1.	Creates the renv/ infrastructure in your project:  
-      1. Folder renv/ with configuration files  
-      2. Rprofile file that activates renv at start-up  
-      3. renv.lock file (empty at start)  
+      1. `renv/`directory with configuration files  
+      2. `Rprofile` file that activates `renv` at start-up  
+      3. `renv.lock` file (empty at start)  
 2.	Isolates the environment: creates a private package library for this project only.  
 3.	Scans the existing code to automatically detect the packages used (via library(), require() ...)  
 4.	Installs the detected packages in the project's private library (NOT all, unfortunatelly...)  
@@ -51,6 +78,7 @@ cd /path/to/my_project/
 vim code/setup_env.R
 ```
 ```R
+#!/usr/bin/env Rscript
 # setup_env.R
 
 cat("Setting up R environment...\n")
@@ -120,7 +148,7 @@ In a bash script, you can also use
 ```R
 renv::restore()
 ```
-if you already have created the `renv`. This function just recall the R environment present in the project directory.
+if you already have created the `renv`. `renv::restore()` compares packages recorded in the lockfile to the packages installed in the project library. Where there are differences it resolves them by installing the lockfile-recorded package into the project library.
 
 ## Use --vanilla to launch R scripts: avoid side-effects
 
