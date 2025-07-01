@@ -1,6 +1,6 @@
 # Submitting a Job with sbatch
 
-The `sbatch` command is used to submit batch jobs to the SLURM scheduler. SLURM (Simple Linux Utility for Resource Management) is a job scheduler widely used in high-performance computing (HPC) clusters. It manages and allocates computing resources, queues user-submitted jobs, and efficiently schedules them across cluster nodes to optimize workload distribution and resource utilization.
+The `sbatch` command is used to submit batch jobs to the SLURM scheduler. SLURM (*Simple Linux Utility for Resource Management*) is a job scheduler widely used in high-performance computing (HPC) clusters. It manages and allocates computing resources, queues user-submitted jobs, and efficiently schedules them across cluster nodes to optimize workload distribution and resource utilization.
 
 Jobs submitted via sbatch are defined in a batch script (usually with a .sh or .slurm extension). This script contains a header section specifying the requested resources (such as number of CPUs, memory, runtime), followed by the commands to execute. The scheduler reads these directives and runs the job accordingly.
 
@@ -9,7 +9,7 @@ The most common way to launch a job on a SLURM cluster is with a script written 
 In addition to the bash commands it must execute, Bash script must include a **header** containing the **SLURM directives**, specifying the resources requested (number of CPUs, memory, maximum time, partition, etc.). 
 
 ## SLURM CONFIGURATION HEADER
-The SLURM scheduler will read this header to determine the priority of the script. 
+The SLURM scheduler will read this header to determine the priority of the script in the queue. 
 
 SLURM does not use a priority based on the order of directives, but calculates a numerical priority for each job, according to several factors (partition requested, time in the queue, size of the job (=number of nodes, memory and cpus requested)). The number of directives entered in the header also has a positive influence on the priority.
 
