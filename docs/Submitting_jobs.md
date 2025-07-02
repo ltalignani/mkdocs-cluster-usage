@@ -91,7 +91,7 @@ If -n > 1, tells SLURM to run several parallel tasks (often for MPI, or sample p
 #SBATCH --cpus-per-task 8
 #SBATCH --mem=8G
 ```
-`--cpus-per-task` is a long option only. It is used to specify the number of cores (CPU threads) to allocate per task.
+`--cpus-per-task` is a long option only. It is used to specify the number of cores (CPU threads) to allocate per task.  
 `--mem=` is used to specify the **maximum memory** allocated to the task.
 
 

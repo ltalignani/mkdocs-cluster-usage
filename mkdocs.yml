@@ -5,6 +5,7 @@ repo_name: ltalignani/mkdocs-cluster-usage
 
 theme:
   name: material
+  language: en
   font:
     text: Roboto
     code: Roboto Mono
@@ -85,7 +86,26 @@ extra:
       link: https://github.com/ltalignani/
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/loic-talignani-83a7581a2/
+  consent:
+    title: Cookie consent
+    description: >- 
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
+    cookies:
+      analytics:
+        name: Google Analytics
+        checked: false
+    actions:
+      - accept
+      - manage
+      - reject
+
 extra_css:
   - css/overrides.css
 
-copyright: Copyright &copy; 2025 Loïc Talignani
+
+copyright: >
+  Copyright &copy; 2025 Loïc Talignani -
+  <a href="#__consent">Change cookie settings</a>
