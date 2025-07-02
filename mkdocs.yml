@@ -2,17 +2,7 @@ site_name: Cluster Usage
 site_url: https://ltalignani.github.io/mkdocs-cluster-usage/
 repo_url: https://github.com/ltalignani/mkdocs-cluster-usage
 repo_name: ltalignani/mkdocs-cluster-usage
-nav:
-  - Home: index.md
-  - Logging: Logging.md
-  - Submitting Jobs:
-    - Batch mode: Submitting_jobs.md
-    - Interactive mode: Interactive_jobs.md
-  - Monitoring: Monitoring.md
-  - Running Clean & Reproducible Jobs:
-    - Python: python.md
-    - R: R.md
-  - About: about.md
+
 theme:
   name: material
   font:
@@ -21,14 +11,14 @@ theme:
   logo: assets/logo-cnrs.png
   favicon: assets/favicon.ico
   features:
-    - navigation.footer
-    - navigation.tabs
-    - navigation.instant
-    - navigation.expand
-    - navigation.top
     - navigation.indexes
     - navigation.sections
+    - navigation.top
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.tracking
+    - navigation.footer
+    - navigation.instant
     - content.code.copy
     - toc.integrate
   palette:
@@ -39,7 +29,6 @@ theme:
         name: Dark mode
       primary: indigo
       accent: deep purple
-
     # Light Mode
     - scheme: default
       toggle:
@@ -47,6 +36,22 @@ theme:
         name: Light mode
       primary: blue
       accent: deep orange
+
+nav:
+  - Home: index.md
+  - Logging: Logging.md
+  - Transfering Files:
+    - Using Rsync: transfer/Rsync.md
+    - Using Filezilla (SFTP) : transfer/SFTP.md
+  - Submitting Jobs:
+    - Batch mode: Submitting_jobs.md
+    - Interactive mode: Interactive_jobs.md
+  - Monitoring: Monitoring.md
+  - Running Clean & Reproducible Jobs:
+    - Python: python.md
+    - R: R.md
+  - About: about.md
+
 
 markdown_extensions:
   - footnotes

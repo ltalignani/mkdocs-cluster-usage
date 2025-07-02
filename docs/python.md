@@ -2,6 +2,31 @@
 
 Python is widely used for data science, bioinformatics, and HPC workflows. On a cluster, it’s essential to manage environments carefully to avoid dependency conflicts and ensure reproducibility.
 
+## Organize your code
+Read this first: [Organizing data in the project directory](Logging.md#organizing-data-in-the-project-directory)
+
+Below is a suggested way of organizing the code, with some files and directories created automatically:
+```
+my_project/
+├── Cluster_logs/  
+├── code/          		        # Script directory
+│   └── myscript.py
+├── data/          		        # Raw data directory
+│   └── data.csv
+├── results/     		        # Analysis results directory
+├── tests/          		    # Temporary test code
+│   └── my_temporary_script.py
+├── tmp/    
+├── venv/          		        # Python virtual env.
+│   └── bin/
+│         └── activate
+│   └── include/
+│   └── lib/
+│   └── pyenv.cfg
+└── README.md
+```
+
+
 ## Best Practices for Running Python Jobs
 
 Before launching a job, make sure your script runs in a controlled Python environment.
