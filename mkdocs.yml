@@ -55,8 +55,9 @@ nav:
 
 
 markdown_extensions:
-  - footnotes
+  - md_in_html
   - attr_list
+  - footnotes
   - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
@@ -77,7 +78,6 @@ markdown_extensions:
       alternate_style: true
   - admonition
   - pymdownx.details
-  - md_in_html
   - def_list
   
 extra:
