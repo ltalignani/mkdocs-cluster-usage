@@ -9,7 +9,7 @@ theme:
   font:
     text: Roboto
     code: Roboto Mono
-  logo: assets/logo-cnrs.png
+  logo: assets/logo_LT.png
   favicon: assets/favicon.ico
   features:
     - navigation.indexes
@@ -41,7 +41,7 @@ theme:
 nav:
   - Home: index.md
   - Logging: Logging.md
-  - Transfering Files:
+  - Transferring Files:
     - Using Rsync: transfer/Rsync.md
     - Using Filezilla (SFTP) : transfer/SFTP.md
   - Submitting Jobs:
@@ -79,6 +79,9 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - def_list
+  - toc:
+      permalink: true
+      toc_depth: 2
   
 extra:
   social:

@@ -1,5 +1,9 @@
 # Transfering Files using Rsync
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 Rsync is a powerful and efficient tool for transferring and synchronizing files between your local computer and a remote cluster. It offers several advantages over basic `scp` or `sftp`, including incremental transfers, compression, and the ability to resume interrupted transfers.
 
 ## Overview

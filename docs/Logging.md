@@ -1,5 +1,9 @@
 # Logging into a High-Performance Computing (HPC) Cluster (ssh)
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 **High-Performance Computing (HPC) clusters** have become indispensable infrastructure in computational biology, addressing the exponential growth in biological data and the computational complexity of modern bioinformatics analyses. As genomic datasets reach terabyte scales and molecular simulations require millions of calculations, traditional desktop computers simply cannot handle the computational demands of contemporary biological research.
 
 HPC clusters provide **massive parallel processing power** by connecting hundreds or thousands of processors, enabling researchers to tackle computationally intensive tasks such as whole-genome assembly, comparative genomics, protein structure prediction, and population genetics studies. Tasks that would take weeks or months on a single computer can be completed in hours or days on a well-configured cluster.
@@ -39,7 +43,7 @@ On Windows, you have to install a terminal emulator like [MobaXterm](https://mob
 
 ### The prompt
 The shell prompt is the command prompt that appears in the terminal, indicating that the system is waiting for input from the user.
-The $ symbol at the end of the prompt is a Unix/Linux convention which indicates that you are logged in as a normal user (non-administrator). On the other hand, the # symbol indicates that you are logged in as root.
+The `$` symbol at the end of the prompt is a Unix/Linux convention which indicates that you are logged in as a normal user (non-administrator). On the other hand, the `#` symbol indicates that you are logged in as root.
 ```bash linenums="1"
 user@hostname:~$ ls          # User
 root@hostname:~# systemctl   # Administrator (root)
@@ -78,9 +82,9 @@ Once connected, you’ll land in your home directory (`$HOME` | `~` | `/home/use
 
 ## Request your project directory 
 
-Some cluster managers propose limited use of the home directory and prefer data to be hosted in a dedicated project directory. In this case, the Principal Investigator (PI) applies to the cluster administrator for a project directory and space (in TeraBytes).
+Some cluster managers propose limited use of the home directory and prefer data to be hosted in a dedicated project directory. In this case, the *Principal Investigator* (PI) applies to the cluster administrator for a project directory and space (in TeraBytes).
 
-## Organizing data in the project directory
+## Organising data in the project directory
 Once the project file has been created, it is essential to get the project off to a good start, by deciding on an organisation that must be respected over time.    
 Choose a structure that works well for you and stick to it as much as possible. Below is a suggested way of organising the code:
 
