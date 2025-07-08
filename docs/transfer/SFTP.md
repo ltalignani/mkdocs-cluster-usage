@@ -1,5 +1,9 @@
 # Transfering Files Using FileZilla and SFTP
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 This guide explains how to transfer files from your local computer to a computing cluster using FileZilla and the SFTP protocol (SSH File Transfer Protocol).
 
 ## Prerequisites

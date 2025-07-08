@@ -1,5 +1,9 @@
 # Running Python Scripts on a Cluster (Clean and Reproducible)
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 Python is widely used for data science, bioinformatics, and HPC workflows. On a cluster, it’s essential to manage environments carefully to avoid dependency conflicts and ensure reproducibility.
 
 ## Organize your code

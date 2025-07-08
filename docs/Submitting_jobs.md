@@ -1,5 +1,9 @@
 # Submitting a Job with sbatch
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 The `sbatch` command is used to submit batch jobs to the SLURM scheduler. SLURM (*Simple Linux Utility for Resource Management*) is a job scheduler widely used in high-performance computing (HPC) clusters. It manages and allocates computing resources, queues user-submitted jobs, and efficiently schedules them across cluster nodes to optimize workload distribution and resource utilization.
 
 Jobs submitted via sbatch are defined in a batch script (usually with a .sh or .slurm extension). This script contains a header section specifying the requested resources (such as number of CPUs, memory, runtime), followed by the commands to execute. The scheduler reads these directives and runs the job accordingly.

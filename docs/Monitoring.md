@@ -1,5 +1,9 @@
 # Monitoring and Managing SLURM Jobs
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 Once your job is submitted, you can check his status, inspect resource usage, or cancel it using the following commands:
 
 ## View partitions and node status

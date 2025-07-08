@@ -1,5 +1,9 @@
 # Running R scripts on a Cluster (clean & reproducible)
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 When launching R scripts on a computing cluster, it is highly recommended to run them in a clean environment to ensure reproducibility and avoid unexpected side effects caused by user-specific configurations. By creating a R projects, you will isolate your work from other projects. Not only can you have project specific files and libraries, but also project specific settings. To do so, you just have to:
 
 1. Create `renv` environment, 

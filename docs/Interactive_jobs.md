@@ -1,5 +1,9 @@
 # Running Interactive Jobs with srun
 
+<h2 class="no-toc">Table of Content</h2>
+
+[TOC]
+
 srun can be used to run jobs interactively or within a job script. This is useful for quick tests or debugging.
 
 
