@@ -8,6 +8,7 @@ This guide introduces:
 ## Transferring File(s)
 •	[Transferring files to/from a cluster with rsync](transfer/Rsync.md)  
 •	[Transferring files to/from a cluster with FileZilla & SFTP](transfer/SFTP.md)  
+•	[Transferring files to/from a cluster via FTP & curl](transfer/FTP.md)  
 
 ## Submitting Job(s)
 •	[Submitting Jobs with sbatch](Submitting_jobs.md)   

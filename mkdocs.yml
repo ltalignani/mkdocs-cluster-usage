@@ -44,6 +44,7 @@ nav:
   - Transferring Files:
     - Transferring Files Using Rsync: transfer/Rsync.md
     - Transferring Files Using Filezilla (SFTP) : transfer/SFTP.md
+    - Transferring Files Via FTP With curl: transfer/FTP.md
   - Submitting Jobs:
     - Submitting Jobs in Batch Mode: Submitting_jobs.md
     -  Submitting Jobs in Interactive Mode: Interactive_jobs.md
