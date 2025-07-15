@@ -199,7 +199,7 @@ vim my_script.R
 #SBATCH --mail-type=FAIL
 ####################################################################
 
-module load R/4.3.0
+module load r/4.3.1
 
 #Setup cleanup trap
 cleanup() {
@@ -212,7 +212,7 @@ trap cleanup EXIT
 
 # Load module
 module purge
-module load R/4.3.3
+module load r/4.3.1
 
 # Set R environment variables
 export TMPDIR=$SLURM_TMPDIR
