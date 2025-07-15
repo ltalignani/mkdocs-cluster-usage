@@ -138,7 +138,7 @@ At this step, you should already have made a list of the packages needed for the
 
 ```bash
 srun -p fast -c 2 --pty bash -i
-module load R/4.3.3
+module load r/4.3.1
 Rscript code/setup_env.R
 ```
 4. The next move: analyzing data
