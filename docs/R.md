@@ -320,12 +320,11 @@ This opens a clean R session in the compute node with the specified resources.
 1. Follow the procedure described previously.
 2. Ask for resources in interactive mode
 
+
 ```bash
 srun --pty --time=2:00:00 --mem=8G bash
 ```
-
-3. Create a complete R script
-
+3. Create a complete R script  
 4. Run the analysis file
 
 ```bash
