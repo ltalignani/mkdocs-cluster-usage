@@ -65,7 +65,7 @@ my_project/
 - `renv.lock` file, `renv/` folder and `.Rprofile` file. This is the virtual environment set up. They will be automatically created by renv when you activate it.  
 - `.Rproj` file. This is an RStudio file containing the project specific settings. Created automatically when you create an R project with RStudio ON Demand (see further).  
 
-## Use renv::init() to create clean environment and install necessary packages
+## Use `renv::init()` to create clean `renv` environment and install necessary packages
 
 `renv::init()` does several important things:
 
@@ -79,19 +79,19 @@ my_project/
 
 ## How to
 
-1. If you haven't already done so, go into the project's directory
+1. **If you haven't already done so, go into the project's directory**
 
 ```bash
 cd /path/to/my_project/
 ```
 
-2. Create a setup_env.R file
+2. **Create a setup_env.R file**
 
 ```bash
 vim code/setup_env.R
 ```
 
-```R
+```R linenums="1"
 #!/usr/bin/env Rscript
 # setup_env.R
 
@@ -113,6 +113,7 @@ required_packages <- c(
     "ggplot2",
     "dplyr",
     "parallel",
+    "devtools",     # For development purposes (packages available on GitHub)
     "BiocManager"   # For Bioconductor packages if necessary
 )
 
@@ -120,10 +121,23 @@ required_packages <- c(
 cat("Installing CRAN packages...\n")
 install.packages(required_packages)
 
-# 5. Bioconductor packages management
+# 5. Install additional packages if needed
+# 5.1 Bioconductor packages management
 if ("BiocManager" %in% required_packages) {
     cat("Installing Bioconductor packages...\n")
     BiocManager::install(c("DESeq2", "edgeR"))  # examples
+}
+
+# 5.2 GitHub packages management
+github_packages <- c(  
+    "petrelharp/local_pca/lostruct",  # Example of a GitHub package
+    "petrelharp/templater"            
+)
+if (length(github_packages) > 0) {
+    cat("Installing GitHub packages...\n")
+    for (pkg in github_packages) {
+        devtools::install_github(pkg)
+    }
 }
 
 # 6. Final snapshot - Freeze all
@@ -142,21 +156,43 @@ Save the file and quit vim by **pressing escape** and entering the following com
 ```
 
 At this step, you should already have made a list of the packages needed for the analyses. If you need to add packages during the analysis, simply edit this file and run it again.  
+</br>
+3. **Use interactive mode to setup the environment**
 
-3. Use interactive mode to setup the environment
-
-```bash
+```bash linenums="1"
 srun -p fast -c 2 --pty bash -i
 module load r/4.3.1
 Rscript code/setup_env.R
 ```
 
-4. The next move: analyzing data
+To check quickly if the environment is set up correctly, you can run:
 
-When you create or open a R script in the project, either via a terminal or in RStudio ONDemand(if available), simply start it with your isolated environment:
+```bash
+module load r/4.3.1
+R
+```
 
-```R
-renv::activate()
+Then, in the R console, run:
+
+```R linenums="1"
+source("renv/activate.R")
+library(ggplot2)
+```
+
+If it works in interactive mode, then the SLURM script should work as well!  
+</br>
+4. **The next move: analyzing data**
+
+**`Interactive mode`**  
+When you create or open a R script in the project in interactive mode, simply start it with your isolated environment:
+
+```R linenums="1"
+#!/usr/bin/env Rscript
+# my_script.R
+
+# Activate the renv environment
+cat("Activating renv environment...\n")
+source("renv/activate.R")
 ```
 
 The previously versions of installed packages will then be available.
@@ -166,13 +202,52 @@ Don't forget to add to the end of your script:
 renv::deactivate()
 ```
 
-In a bash script, you can also use
+`renv::deactivate` will deactivate the renv environment, allowing you to return to the global R environment. It frees up memory used by project specific package loading and settings, which is particularly useful if you are running multiple scripts in the same R session. It also remove temporary files created during renv session.
 
-```R
-renv::restore()
+</br>
+
+**`Batch mode`**  
+In a bash script running your R script in batch mode, you have to source the `renv` environment and `restore` the packages before running your R script. Here is an example of how to do this:
+
+```bash linenums="1"
+#!/bin/bash
+###################configuration slurm##############################
+...
+####################################################################
+# Load module
+...
+
+export RENV_PATHS_LIBRARY="./renv/library"
+export RENV_PATHS_CACHE="./renv/staging"
+export RENV_CONSENT=TRUE
+
+echo "renv environment variables:"
+echo "  RENV_PATHS_LIBRARY: $RENV_PATHS_LIBRARY"
+echo "  RENV_PATHS_CACHE: $RENV_PATHS_CACHE"
+echo "  RENV_CONSENT: $RENV_CONSENT"
+
+# Restore the renv environment using the local structure
+echo "Restoring renv environment from local project..."
+Rscript -e "
+# Configure renv to use local paths
+options(renv.consent = TRUE)
+
+# Activate renv from the project directory
+source('renv/activate.R')
+
+# Restore packages
+cat('Starting restore...\n')
+renv::restore(prompt = FALSE)
+
+cat('renv status after restore:\n')
+renv::status()
+"
+
+# Run your R script
+...
 ```
 
-if you already have created the `renv`. `renv::restore()` compares packages recorded in the lockfile to the packages installed in the project library. Where there are differences it resolves them by installing the lockfile-recorded package into the project library.
+`renv::restore()` will restore the packages in the project's private library, ensuring that the script runs with the correct versions of the packages. It reads the lockfile to see exactly which packages and versions were recorded when you last ran `renv::snapshot()`. This ensures that your script runs with the same package versions every time, which is crucial for reproducibility. It identifies differences and downloads and installs the exact versions specified int the `renv.lock` file.
 
 ## Use --vanilla to launch R scripts: avoid side-effects
 
@@ -320,10 +395,10 @@ This opens a clean R session in the compute node with the specified resources.
 1. Follow the procedure described previously.
 2. Ask for resources in interactive mode
 
-
 ```bash
 srun --pty --time=2:00:00 --mem=8G bash
 ```
+
 3. Create a complete R script  
 4. Run the analysis file
 
